@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join Videos</title>
+<meta name="description" content="Join several videos from Photos into one on your Mac, keeping the date and location.">
+<link rel="icon" id="fav" href="data:,">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#0f172a;--mute:#5b6478;--line:#e4e7ef;--a1:#6366f1;--a2:#06b6d4;--b1:#f97316;--b2:#ec4899;--shadow:0 10px 30px rgba(15,23,42,.08)}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--card:#131a2e;--ink:#eef1f8;--mute:#9aa4bd;--line:#232c47;--shadow:0 10px 30px rgba(0,0,0,.4)}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+header{display:flex;justify-content:flex-end;padding:18px 0}
+select{appearance:none;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 34px 8px 14px;font:inherit;font-size:14px;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+.hero{text-align:center;padding:24px 0 46px}
+.hero img{width:132px;height:132px;filter:drop-shadow(0 18px 24px rgba(79,70,229,.3))}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.05;margin:18px 0 14px;letter-spacing:-.02em;background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{font-size:clamp(18px,2.6vw,22px);max-width:660px;margin:0 auto 8px}
+.sub{color:var(--mute);margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;margin:10px 0 56px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
+.card .top{display:flex;align-items:center;gap:16px}
+.card img{width:72px;height:72px;flex:none}
+.card h2{margin:0;font-size:22px}
+.card p{margin:0;color:var(--mute)}
+.btn{display:inline-block;margin-top:auto;text-align:center;text-decoration:none;color:#fff;font-weight:600;padding:13px 22px;border-radius:14px;background:linear-gradient(90deg,var(--a1),var(--a2));box-shadow:0 8px 18px rgba(99,102,241,.35);transition:transform .15s}
+.btn.svc{background:linear-gradient(90deg,var(--b1),var(--b2));box-shadow:0 8px 18px rgba(249,115,22,.3)}
+.btn:hover{transform:translateY(-2px)}
+.note{font-size:13px;color:var(--mute);text-align:center}
+h3.sec{font-size:26px;text-align:center;margin:0 0 22px;letter-spacing:-.01em}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-bottom:56px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.step .n{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-weight:700;display:grid;place-items:center;margin-bottom:12px}
+.step h4{margin:0 0 6px;font-size:18px}
+.step p{margin:0;color:var(--mute);font-size:15px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 26px;margin-bottom:56px}
+.box p{margin:6px 0;color:var(--mute)}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 2px;color:var(--mute)}
+footer{text-align:center;color:var(--mute);font-size:14px;padding:30px 0 50px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <label class="sr" for="lang" style="position:absolute;left:-9999px">Language</label>
+    <select id="lang" aria-label="Language">
+      <option value="en">English</option>
+      <option value="pt-PT">Português (Portugal)</option>
+      <option value="pt-BR">Português (Brasil)</option>
+      <option value="es">Español</option>
+    </select>
+  </header>
+
+  <section class="hero">
+    <img data-icon="app" alt="">
+    <h1 data-i="title"></h1>
+    <p class="tag" data-i="tagline"></p>
+    <p class="sub" data-i="sub"></p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <div class="top"><img data-icon="app" alt=""><h2 data-i="app_title"></h2></div>
+      <p data-i="app_desc"></p>
+      <a class="btn" href="https://github.com/istandreist/juntar-videos/releases/latest/download/JuntarVideos.dmg" download data-i="app_btn"></a>
+      <div class="note" data-i="app_note"></div>
+    </div>
+    <div class="card">
+      <div class="top"><img data-icon="svc" alt=""><h2 data-i="svc_title"></h2></div>
+      <p data-i="svc_desc"></p>
+      <a class="btn svc" href="https://github.com/istandreist/juntar-videos/releases/latest/download/JuntarVideos-Servico.zip" download data-i="svc_btn"></a>
+      <div class="note" data-i="svc_note"></div>
+    </div>
+  </section>
+
+  <h3 class="sec" data-i="how_title"></h3>
+  <section class="steps">
+    <div class="step"><div class="n">1</div><h4 data-i="s1t"></h4><p data-i="s1d"></p></div>
+    <div class="step"><div class="n">2</div><h4 data-i="s2t"></h4><p data-i="s2d"></p></div>
+    <div class="step"><div class="n">3</div><h4 data-i="s3t"></h4><p data-i="s3d"></p></div>
+  </section>
+
+  <h3 class="sec" data-i="open_title"></h3>
+  <section class="box">
+    <p data-i="open_app"></p>
+    <p data-i="open_svc"></p>
+  </section>
+
+  <h3 class="sec" data-i="faq_title"></h3>
+  <section style="margin-bottom:20px">
+    <details><summary data-i="q1"></summary><p data-i="a1"></p></details>
+    <details><summary data-i="q2"></summary><p data-i="a2"></p></details>
+    <details><summary data-i="q3"></summary><p data-i="a3"></p></details>
+  </section>
+
+  <footer data-i="foot"></footer>
+</div>
+
+<script>
+function mk(a,b,svc){var s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+a+'"/><stop offset="1" stop-color="'+b+'"/></linearGradient><linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient><filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#0B1020" flood-opacity=".35"/></filter><filter id="s2" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0B1020" flood-opacity=".28"/></filter></defs><rect x="100" y="100" width="824" height="824" rx="190" fill="url(#g)" filter="url(#sh)"/><rect x="100" y="100" width="824" height="824" rx="190" fill="url(#gl)"/><rect x="212" y="360" width="600" height="304" rx="46" fill="#fff" filter="url(#s2)"/>';for(var i=0;i<10;i++){var x=236+51.8*i;s+='<rect x="'+x+'" y="380" width="34" height="22" rx="6" fill="url(#g)" opacity=".9"/><rect x="'+x+'" y="622" width="34" height="22" rx="6" fill="url(#g)" opacity=".9"/>';}s+='<rect x="236" y="430" width="170" height="164" rx="20" fill="'+a+'" opacity=".95"/><rect x="427" y="430" width="170" height="164" rx="20" fill="url(#g)"/><rect x="618" y="430" width="170" height="164" rx="20" fill="'+b+'" opacity=".95"/><path d="M492 478L492 546L550 512Z" fill="#fff"/>';if(svc){s+='<circle cx="742" cy="742" r="118" fill="#fff"/><circle cx="742" cy="742" r="118" fill="none" stroke="url(#g)" stroke-width="10" opacity=".25"/><rect x="690" y="702" width="104" height="14" rx="7" fill="url(#g)"/><rect x="690" y="735" width="104" height="14" rx="7" fill="url(#g)"/><rect x="690" y="768" width="68" height="14" rx="7" fill="url(#g)"/>';}return "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(s+"</svg>");}
+var ICONS={app:mk("#6366F1","#06B6D4",0),svc:mk("#F97316","#EC4899",1)};
+var imgs=document.querySelectorAll("img[data-icon]");for(var q=0;q<imgs.length;q++){imgs[q].src=ICONS[imgs[q].getAttribute("data-icon")];}
+document.getElementById("fav").href=ICONS.app;
+var T = {"en": {"lang_name": "English", "title": "Join Videos", "tagline": "Join several videos from Photos into one — keeping the date and location.", "sub": "A free Mac app. No quality loss when your clips share the same format.", "app_title": "The app", "app_desc": "Pick your videos, drag them into order, choose which clip gives the date and location, and join. The result goes straight back to Photos.", "app_btn": "Download for Mac", "app_note": "macOS 13 or later · Intel and Apple Silicon", "svc_title": "Photos integration", "svc_desc": "Adds Photos › Services › Join Videos. Select videos in Photos, choose it from the menu, and the app opens with them ready to join.", "svc_btn": "Download the Service", "svc_note": "Optional · needs the app installed first", "how_title": "How it works", "s1t": "Choose", "s1d": "Pick two or more videos from your Photos library.", "s2t": "Order", "s2d": "Drag to reorder and pick the clip that provides the date and location.", "s3t": "Join", "s3d": "One click. The new video appears in Photos with the right date and place.", "open_title": "Opening it the first time", "open_app": "The app isn't notarized by Apple, so macOS asks for confirmation once: open System Settings › Privacy & Security and click “Open Anyway”.", "open_svc": "For the Service installer, right-click “Install Service.command” and choose Open the first time.", "faq_title": "Questions", "q1": "Does joining reduce quality?", "a1": "Not when your clips share the same format (for example, recorded on the same iPhone): they are joined without re-encoding, keeping resolution, frame rate and HDR. Different formats are converted to match the first clip.", "q2": "Where do my videos go?", "a2": "Nowhere. Everything happens on your Mac and nothing is uploaded. The original videos are never changed or deleted.", "q3": "Which date and location does the new video get?", "a3": "The ones from the clip you choose — by default the first in the list, or the oldest.", "foot": "Made for Mac · Free to use"}, "pt-PT": {"lang_name": "Português (Portugal)", "title": "Juntar Vídeos", "tagline": "Junte vários vídeos do Fotografias num só — mantendo a data e a localização.", "sub": "Uma app gratuita para Mac. Sem perda de qualidade quando os clips têm o mesmo formato.", "app_title": "A app", "app_desc": "Escolha os vídeos, arraste-os para a ordem certa, indique que clip dá a data e a localização e junte. O resultado volta diretamente ao Fotografias.", "app_btn": "Transferir para Mac", "app_note": "macOS 13 ou posterior · Intel e Apple Silicon", "svc_title": "Integração no Fotografias", "svc_desc": "Acrescenta Fotografias › Serviços › Juntar Vídeos. Selecione os vídeos no Fotografias, escolha a opção no menu e a app abre com eles prontos a juntar.", "svc_btn": "Transferir o Serviço", "svc_note": "Opcional · exige a app instalada primeiro", "how_title": "Como funciona", "s1t": "Escolher", "s1d": "Escolha dois ou mais vídeos da sua biblioteca do Fotografias.", "s2t": "Ordenar", "s2d": "Arraste para mudar a ordem e escolha o clip que dá a data e a localização.", "s3t": "Juntar", "s3d": "Um clique. O vídeo novo aparece no Fotografias com a data e o local certos.", "open_title": "Abrir pela primeira vez", "open_app": "A app não está notarizada pela Apple, por isso o macOS pede confirmação uma vez: abra Definições do Sistema › Privacidade e Segurança e carregue em “Abrir mesmo assim”.", "open_svc": "No instalador do Serviço, na primeira vez, clique com o botão direito em “Install Service.command” e escolha Abrir.", "faq_title": "Perguntas", "q1": "Juntar reduz a qualidade?", "a1": "Não, quando os clips têm o mesmo formato (por exemplo, gravados no mesmo iPhone): são juntados sem recodificar, mantendo resolução, taxa de imagens e HDR. Formatos diferentes são convertidos para igualar o primeiro clip.", "q2": "Para onde vão os meus vídeos?", "a2": "Para lado nenhum. Tudo acontece no seu Mac e nada é enviado. Os vídeos originais nunca são alterados nem apagados.", "q3": "Que data e localização recebe o vídeo novo?", "a3": "As do clip que escolher — por omissão o primeiro da lista, ou o mais antigo.", "foot": "Feito para Mac · Gratuito"}, "pt-BR": {"lang_name": "Português (Brasil)", "title": "Juntar Vídeos", "tagline": "Junte vários vídeos do app Fotos em um só — mantendo a data e a localização.", "sub": "Um app gratuito para Mac. Sem perda de qualidade quando os clipes têm o mesmo formato.", "app_title": "O app", "app_desc": "Escolha os vídeos, arraste para a ordem certa, indique qual clipe fornece a data e a localização e junte. O resultado volta direto para o Fotos.", "app_btn": "Baixar para Mac", "app_note": "macOS 13 ou posterior · Intel e Apple Silicon", "svc_title": "Integração com o Fotos", "svc_desc": "Adiciona Fotos › Serviços › Juntar Vídeos. Selecione os vídeos no Fotos, escolha a opção no menu e o app abre com eles prontos para juntar.", "svc_btn": "Baixar o Serviço", "svc_note": "Opcional · exige o app instalado antes", "how_title": "Como funciona", "s1t": "Escolher", "s1d": "Escolha dois ou mais vídeos da sua biblioteca do Fotos.", "s2t": "Ordenar", "s2d": "Arraste para mudar a ordem e escolha o clipe que fornece a data e a localização.", "s3t": "Juntar", "s3d": "Um clique. O novo vídeo aparece no Fotos com a data e o local certos.", "open_title": "Abrindo pela primeira vez", "open_app": "O app não é notarizado pela Apple, então o macOS pede confirmação uma vez: abra Ajustes do Sistema › Privacidade e Segurança e clique em “Abrir Mesmo Assim”.", "open_svc": "No instalador do Serviço, na primeira vez, clique com o botão direito em “Install Service.command” e escolha Abrir.", "faq_title": "Perguntas", "q1": "Juntar reduz a qualidade?", "a1": "Não, quando os clipes têm o mesmo formato (por exemplo, gravados no mesmo iPhone): eles são juntados sem recodificar, mantendo resolução, taxa de quadros e HDR. Formatos diferentes são convertidos para igualar o primeiro clipe.", "q2": "Para onde vão meus vídeos?", "a2": "Para lugar nenhum. Tudo acontece no seu Mac e nada é enviado. Os vídeos originais nunca são alterados nem apagados.", "q3": "Qual data e localização o novo vídeo recebe?", "a3": "As do clipe que você escolher — por padrão o primeiro da lista, ou o mais antigo.", "foot": "Feito para Mac · Gratuito"}, "es": {"lang_name": "Español", "title": "Unir Vídeos", "tagline": "Une varios vídeos de Fotos en uno solo, conservando la fecha y la ubicación.", "sub": "Una app gratuita para Mac. Sin pérdida de calidad cuando tus clips tienen el mismo formato.", "app_title": "La app", "app_desc": "Elige los vídeos, arrástralos al orden correcto, indica qué clip aporta la fecha y la ubicación y únelos. El resultado vuelve directamente a Fotos.", "app_btn": "Descargar para Mac", "app_note": "macOS 13 o posterior · Intel y Apple Silicon", "svc_title": "Integración con Fotos", "svc_desc": "Añade Fotos › Servicios › Unir Vídeos. Selecciona los vídeos en Fotos, elige la opción en el menú y la app se abre con ellos listos para unir.", "svc_btn": "Descargar el Servicio", "svc_note": "Opcional · requiere tener la app instalada antes", "how_title": "Cómo funciona", "s1t": "Elegir", "s1d": "Elige dos o más vídeos de tu fototeca.", "s2t": "Ordenar", "s2d": "Arrastra para cambiar el orden y elige el clip que aporta la fecha y la ubicación.", "s3t": "Unir", "s3d": "Un clic. El nuevo vídeo aparece en Fotos con la fecha y el lugar correctos.", "open_title": "Abrirla por primera vez", "open_app": "La app no está notarizada por Apple, así que macOS pide confirmación una vez: abre Ajustes del Sistema › Privacidad y seguridad y pulsa «Abrir igualmente».", "open_svc": "En el instalador del Servicio, la primera vez, haz clic derecho en «Install Service.command» y elige Abrir.", "faq_title": "Preguntas", "q1": "¿Unir reduce la calidad?", "a1": "No, cuando los clips tienen el mismo formato (por ejemplo, grabados con el mismo iPhone): se unen sin recodificar, conservando resolución, fotogramas por segundo y HDR. Los formatos distintos se convierten para igualar el primer clip.", "q2": "¿Adónde van mis vídeos?", "a2": "A ninguna parte. Todo ocurre en tu Mac y no se sube nada. Los vídeos originales nunca se modifican ni se borran.", "q3": "¿Qué fecha y ubicación recibe el vídeo nuevo?", "a3": "Las del clip que elijas: por defecto el primero de la lista, o el más antiguo.", "foot": "Hecho para Mac · Gratuito"}};
+var SUPPORTED = ["en","pt-PT","pt-BR","es"];
+
+function detect(){
+  var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
+  for (var i = 0; i < list.length; i++){
+    var l = String(list[i]).toLowerCase();
+    if (l === "pt-br") return "pt-BR";
+    if (l.indexOf("pt") === 0) return "pt-PT";
+    if (l.indexOf("es") === 0) return "es";
+    if (l.indexOf("en") === 0) return "en";
+  }
+  return "en";
+}
+
+function apply(code){
+  if (!T[code]) code = "en";
+  var d = T[code];
+  document.documentElement.lang = code;
+  document.title = d.title;
+  var nodes = document.querySelectorAll("[data-i]");
+  for (var i = 0; i < nodes.length; i++){
+    var k = nodes[i].getAttribute("data-i");
+    if (d[k] !== undefined) nodes[i].textContent = d[k];
+  }
+  document.getElementById("lang").value = code;
+}
+
+var chosen = null;
+try { chosen = localStorage.getItem("jv-lang"); } catch(e) {}
+if (SUPPORTED.indexOf(chosen) < 0) chosen = detect();
+apply(chosen);
+
+document.getElementById("lang").addEventListener("change", function(e){
+  try { localStorage.setItem("jv-lang", e.target.value); } catch(err) {}
+  apply(e.target.value);
+});
+</script>
+</body>
+</html>
