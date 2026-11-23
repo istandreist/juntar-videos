@@ -1,0 +1,5 @@
+"CFBundleDisplayName" = "Juntar Vídeos";
+"CFBundleName" = "Juntar Vídeos";
+"NSPhotoLibraryUsageDescription" = "Para escolher os vídeos que você quer juntar e ler a data e a localização deles.";
+"NSPhotoLibraryAddUsageDescription" = "Para adicionar ao Fotos o vídeo juntado.";
+"NSAppleEventsUsageDescription" = "Para ler os vídeos que você selecionou no Fotos.";
