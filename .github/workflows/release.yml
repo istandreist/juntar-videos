@@ -1,0 +1,64 @@
+name: Build and release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release tag (e.g. v1.0)"
+        required: true
+        default: "v1.0"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install librsvg (icon rendering)
+        run: brew install librsvg
+
+      - name: Render app icon
+        run: |
+          cd app/Resources
+          sed 's/ filter="url(#[a-z0-9]*)"//g' app-icon.svg > icon-nofilter.svg
+          mkdir -p AppIcon.iconset
+          for s in 16 32 128 256 512; do
+            rsvg-convert -w $s -h $s icon-nofilter.svg -o AppIcon.iconset/icon_${s}x${s}.png
+            rsvg-convert -w $((s*2)) -h $((s*2)) icon-nofilter.svg -o AppIcon.iconset/icon_${s}x${s}@2x.png
+          done
+          ls -la AppIcon.iconset
+
+      - name: Build app and DMG
+        run: |
+          cd app
+          chmod +x build.command
+          CI=1 ./build.command
+
+      - name: Package the Service installer
+        run: |
+          mkdir -p dist/JuntarVideos-Servico
+          cp service/* dist/JuntarVideos-Servico/
+          chmod +x "dist/JuntarVideos-Servico/Install Service.command"
+          ditto -c -k --keepParent dist/JuntarVideos-Servico dist/JuntarVideos-Servico.zip
+          cp app/JuntarVideos.dmg dist/JuntarVideos.dmg
+          ls -la dist
+
+      - name: Keep the files as a workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: JuntarVideos
+          path: |
+            dist/JuntarVideos.dmg
+            dist/JuntarVideos-Servico.zip
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.event.inputs.version }}" \
+            dist/JuntarVideos.dmg dist/JuntarVideos-Servico.zip \
+            --title "Join Videos ${{ github.event.inputs.version }}" \
+            --notes "Download JuntarVideos.dmg (the app) and, optionally, JuntarVideos-Servico.zip (Photos > Services). Not notarized: on first open use System Settings > Privacy & Security > Open Anyway."
