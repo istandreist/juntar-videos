@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleExecutable</key><string>JuntarVideos</string>
+  <key>CFBundleIdentifier</key><string>pt.juntarvideos.app</string>
+  <key>CFBundleName</key><string>Join Videos</string>
+  <key>CFBundleDisplayName</key><string>Join Videos</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>CFBundleDevelopmentRegion</key><string>en</string>
+  <key>CFBundleLocalizations</key>
+  <array><string>en</string><string>pt-PT</string><string>pt-BR</string><string>es</string></array>
+  <key>CFBundleURLTypes</key>
+  <array><dict>
+    <key>CFBundleURLName</key><string>pt.juntarvideos.app</string>
+    <key>CFBundleURLSchemes</key><array><string>juntarvideos</string></array>
+  </dict></array>
+  <key>LSMinimumSystemVersion</key><string>13.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>LSApplicationCategoryType</key><string>public.app-category.photography</string>
+  <key>NSPhotoLibraryUsageDescription</key><string>To choose the videos you want to join and read their date and location.</string>
+  <key>NSPhotoLibraryAddUsageDescription</key><string>To add the joined video to Photos.</string>
+  <key>NSAppleEventsUsageDescription</key><string>To read the videos you selected in Photos.</string>
+</dict></plist>
