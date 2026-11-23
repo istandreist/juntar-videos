@@ -1,0 +1,5 @@
+"CFBundleDisplayName" = "Join Videos";
+"CFBundleName" = "Join Videos";
+"NSPhotoLibraryUsageDescription" = "To choose the videos you want to join and read their date and location.";
+"NSPhotoLibraryAddUsageDescription" = "To add the joined video to Photos.";
+"NSAppleEventsUsageDescription" = "To read the videos you selected in Photos.";
