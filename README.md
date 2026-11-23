@@ -11,24 +11,28 @@ App gratuita para Mac que une varios vídeos de Fotos en uno, conservando la fec
 - Optional Service: Photos › Services › Join Videos opens the app with your selection.
 - macOS 13+, Intel and Apple Silicon. Everything runs on your Mac; nothing is uploaded; originals are never changed.
 - Not notarized by Apple: the first time, open System Settings › Privacy & Security and click "Open Anyway".
+- The result follows the first clip's orientation and frame rate. Vertical clips or different fps mean the video is converted (slower; vertical clips get black bars). Avoid mixing slow-motion clips.
 
 ## Português (Portugal)
 - Escolha os vídeos, arraste para ordenar, indique o clip que dá a data e a localização e junte. O resultado volta ao Fotografias.
 - Serviço opcional: Fotografias › Serviços › Juntar Vídeos abre a app com a sua seleção.
 - macOS 13+, Intel e Apple Silicon. Tudo corre no seu Mac; nada é enviado; os originais nunca são alterados.
 - Sem notarização da Apple: da primeira vez, abra Definições do Sistema › Privacidade e Segurança e carregue em "Abrir mesmo assim".
+- O resultado segue a orientação e os fotogramas por segundo do primeiro clip. Clips verticais ou com outros fps obrigam a converter o vídeo (mais lento; clips verticais ficam com barras pretas). Evite misturar clips em câmara lenta.
 
 ## Português (Brasil)
 - Escolha os vídeos, arraste para ordenar, indique o clipe que fornece data e localização e junte. O resultado volta ao Fotos.
 - Serviço opcional: Fotos › Serviços › Juntar Vídeos abre o app com sua seleção.
 - macOS 13+, Intel e Apple Silicon. Tudo roda no seu Mac; nada é enviado; os originais nunca são alterados.
 - Sem notarização da Apple: na primeira vez, abra Ajustes do Sistema › Privacidade e Segurança e clique em "Abrir Mesmo Assim".
+- O resultado segue a orientação e os quadros por segundo do primeiro clipe. Clipes verticais ou com outros fps obrigam a converter o vídeo (mais lento; clipes verticais ficam com barras pretas). Evite misturar clipes em câmera lenta.
 
 ## Español
 - Elige los vídeos, arrastra para ordenar, indica el clip que aporta fecha y ubicación y únelos. El resultado vuelve a Fotos.
 - Servicio opcional: Fotos › Servicios › Unir Vídeos abre la app con tu selección.
 - macOS 13+, Intel y Apple Silicon. Todo ocurre en tu Mac; no se sube nada; los originales nunca se modifican.
 - Sin notarizar por Apple: la primera vez, abre Ajustes del Sistema › Privacidad y seguridad y pulsa «Abrir igualmente».
+- El resultado sigue la orientación y los fotogramas por segundo del primer clip. Los clips verticales o con otros fps obligan a convertir el vídeo (más lento; los verticales llevan barras negras). Evita mezclar clips a cámara lenta.
 
 ## License
 MIT
