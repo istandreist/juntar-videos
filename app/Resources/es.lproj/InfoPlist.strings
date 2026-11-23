@@ -1,0 +1,5 @@
+"CFBundleDisplayName" = "Unir Vídeos";
+"CFBundleName" = "Unir Vídeos";
+"NSPhotoLibraryUsageDescription" = "Para elegir los vídeos que quieres unir y leer su fecha y ubicación.";
+"NSPhotoLibraryAddUsageDescription" = "Para añadir a Fotos el vídeo unido.";
+"NSAppleEventsUsageDescription" = "Para leer los vídeos que has seleccionado en Fotos.";
