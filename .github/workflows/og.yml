@@ -1,0 +1,17 @@
+name: Render share image
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y librsvg2-bin fonts-liberation
+      - run: rsvg-convert og-image.svg -o og-image.png
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add og-image.png
+          git commit -m "Add share image" || echo "nothing to commit"
+          git push
